@@ -12,3 +12,7 @@ class Task(models.Model):
 
 class Tag(models.Model):
     title = models.CharField(max_length=200)
+    task = models.ManyToManyField(Task)
+
+    def __str__(self):
+        return self.title
