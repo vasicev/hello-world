@@ -15,8 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from rest_framework import routers
+from home import views
+
+routers = routers.DefaultRouter()
+routers.register('task', views.TaskViewSet, basename='task')
+routers.register('tag', views.TagViewSet, basename='tag')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('home.urls'))
+    path('', include(routers.urls))
 ]
